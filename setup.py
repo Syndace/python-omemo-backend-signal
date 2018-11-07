@@ -16,10 +16,7 @@ with open("README.md") as f:
 setup(
     name = "omemo-backend-signal",
     version = version.__version__,
-    description = (
-        "A Python implementation of the OMEMO Multi-End Message and Object Encryption " +
-        "protocol."
-    ),
+    description = "A backend for python-omemo offering compatibility with libsignal.",
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/Syndace/python-omemo-backend-signal",
@@ -28,7 +25,11 @@ setup(
     license = "GPLv3",
     packages = find_packages(),
     install_requires = [
-        "OMEMO>=0.8.0,<0.9"
+        "X3DH>=0.5.3,<0.6",
+        "DoubleRatchet>=0.4.0,<0.5",
+        "OMEMO>=0.8.0,<0.9",
+        "cryptography>=1.7.1",
+        "protobuf>=2.6.1"
     ],
     python_requires = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4",
     zip_safe = True,

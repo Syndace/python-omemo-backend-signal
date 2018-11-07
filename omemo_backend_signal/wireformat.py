@@ -2,9 +2,8 @@ from __future__ import absolute_import
 
 import doubleratchet
 
+from omemo.backends import WireFormat as WF
 from omemo.exceptions import WireFormatException
-
-from .. import wireformat
 
 from . import whispertextprotocol_pb2 as wtp
 
@@ -70,7 +69,7 @@ def decodePublicKey(key):
 def encodePublicKey(key):
     return bytes(bytearray([ KEY_TYPE_25519 ])) + key
 
-class WireFormat(wireformat.WireFormat):
+class WireFormat(WF):
     @staticmethod
     def messageFromWire(obj):
         # Due to the nature the mac is calculated by signal, the authentication

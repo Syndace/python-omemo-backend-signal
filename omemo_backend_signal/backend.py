@@ -1,7 +1,9 @@
-from .. import backend
+from __future__ import absolute_import
+
+from omemo.backends import Backend
 
 from .doubleratchet import DoubleRatchet
 from .wireformat import WireFormat
 from .x3dh import State as X3DHState
 
-BACKEND = backend.Backend(WireFormat, X3DHState, DoubleRatchet)
+BACKEND = Backend(WireFormat, X3DHState, DoubleRatchet)

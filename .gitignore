@@ -1,6 +1,6 @@
 build/
 dist/
-OMEMO.egg-info/
+omemo_backend_signal.egg-info/
 *.pyc
 
 .pytest_cache/
