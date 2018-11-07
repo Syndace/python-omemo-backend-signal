@@ -1,0 +1,10 @@
+build/
+dist/
+OMEMO.egg-info/
+*.pyc
+
+.pytest_cache/
+
+docs/_build/
+
+install.sh
