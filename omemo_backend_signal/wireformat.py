@@ -29,7 +29,7 @@ def calculateMAC(data, key, IK_sender, IK_receiver):
 
     auth.update(IK_sender + IK_receiver + data)
 
-    # Append the authentication to the ciphertext
+    # Return the part of the mac that is used my libsignal
     return auth.finalize()[:MAC_SIZE]
 
 def checkVersion(data):
