@@ -8,3 +8,4 @@ omemo_backend_signal.egg-info/
 docs/_build/
 
 install.sh
+Makefile

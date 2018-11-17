@@ -3,19 +3,26 @@ from setuptools import setup, find_packages
 import os
 import sys
 
-sys.path.append(os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "omemo_backend_signal"
-))
+version_file_path = os.path.join(
+	os.path.dirname(os.path.abspath(__file__)),
+	"omemo_backend_signal",
+	"version.py"
+)
 
-import version
+version = {}
+
+try:
+	execfile(version_file_path, version)
+except:
+	with open(version_file_path) as fp:
+		exec(fp.read(), version)
 
 with open("README.md") as f:
     long_description = f.read()
 
 setup(
     name = "omemo-backend-signal",
-    version = version.__version__,
+    version = version["__version__"],
     description = "A backend for python-omemo offering compatibility with libsignal.",
     long_description = long_description,
     long_description_content_type = "text/markdown",
