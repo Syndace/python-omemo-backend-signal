@@ -12,7 +12,7 @@ class X3DHPKEncoder(omemo.backends.X3DHPKEncoder):
 
     @staticmethod
     def decodePublicKey(key_encoded):
-        if key_encoded[0] == b"\x05":
+        if key_encoded[0:1] == b"\x05":
             return (key_encoded[1:], "25519")
         
         raise NotImplementedError
