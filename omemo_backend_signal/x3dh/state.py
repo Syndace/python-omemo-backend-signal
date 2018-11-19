@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from .publickeyencoder import PublicKeyEncoder
+from .x3dhpkencoder import X3DHPKEncoder
 
 import x3dh
 
@@ -25,7 +25,7 @@ class State(x3dh.State):
             7 * 24 * 60 * 60,                 # spk_timeout
             20,                               # min_num_otpks
             100,                              # max_num_otpks
-            PublicKeyEncoder                  # public_key_encoder_class
+            X3DHPKEncoder                     # public_key_encoder_class
         )
 
     def serialize(self):
