@@ -106,9 +106,11 @@ class WireFormat(WF):
     def finalizeMessageFromWire(obj, additional):
         dr_additional = additional["DoubleRatchet"]
 
-        ad  = dr_additional["ad"]
+        IK_own   = dr_additional["ad"][:33]
+        IK_other = dr_additional["ad"][33:]
+
         key = dr_additional["key"]
-        mac = calculateMAC(obj[:-MAC_SIZE], key, ad["IK_other"], ad["IK_own"])
+        mac = calculateMAC(obj[:-MAC_SIZE], key, IK_other, IK_own)
 
         if not additional["WireFormat"] == mac:
             raise WireFormatException("Message authentication failed.")
@@ -141,10 +143,12 @@ class WireFormat(WF):
         # (idk about the truncation though).
         dr_additional = additional["DoubleRatchet"]
 
-        ad  = dr_additional["ad"]
+        IK_own   = dr_additional["ad"][:33]
+        IK_other = dr_additional["ad"][33:]
+
         key = dr_additional["key"]
 
-        data += calculateMAC(data, key, ad["IK_own"], ad["IK_other"])
+        data += calculateMAC(data, key, IK_own, IK_other)
         
         return data
 

@@ -28,36 +28,23 @@ class State(x3dh.State):
             X3DHPKEncoder                     # public_key_encoder_class
         )
 
-    def serialize(self):
-        return {
-            "super": super(State, self).serialize()
-        }
-
-    @classmethod
-    def fromSerialized(cls, serialized, *args, **kwargs):
-        return super(State, cls).fromSerialized(
-            serialized["super"],
-            *args,
-            **kwargs
-        )
-
     def getSharedSecretActive(self, *args, **kwargs):
         # X3DH is specified to build the associated data as follows: IK_A || IK_B.
         # As per usual, WhisperSystems weren't satisfied with their own solution and
         # instead of using the ad as built by X3DH they ALWAYS do:
         #     IK_sender || IK_receiver.
-        # That means, when decyprint a message, another ad is used as when encrypting a
-        # message.
+        # That means, when decrypting a message, a different ad is used as when encrypting
+        # a message.
         #
-        # To allow for this to happen, we split the ad returned by X3DH into IK_own and
-        # IK_other.
+        # To allow for this to happen, the ad is reordered so that it always has following
+        # structure: IK_own || IK_other.
 
         result = super(State, self).getSharedSecretActive(*args, **kwargs)
 
-        result["ad"] = {
-            "IK_own"   : result["ad"][:33],
-            "IK_other" : result["ad"][33:]
-        }
+        IK_own   = result["ad"][:33]
+        IK_other = result["ad"][33:]
+
+        result["ad"] = IK_own + IK_other
 
         return result
 
@@ -65,9 +52,9 @@ class State(x3dh.State):
         result = super(State, self).getSharedSecretPassive(*args, **kwargs)
 
         # See getSharedSecretActive for an explanation
-        result["ad"] = {
-            "IK_own"   : result["ad"][33:],
-            "IK_other" : result["ad"][:33]
-        }
+        IK_own   = result["ad"][33:]
+        IK_other = result["ad"][:33]
+
+        result["ad"] = IK_own + IK_other
 
         return result

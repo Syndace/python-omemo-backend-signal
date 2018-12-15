@@ -10,16 +10,3 @@ class SymmetricKeyRatchet(doubleratchet.ratchets.SymmetricKeyRatchet):
             SendRecvChain,
             SendRecvChain
         )
-
-    def serialize(self):
-        return {
-            "super": super(SymmetricKeyRatchet, self).serialize()
-        }
-
-    @classmethod
-    def fromSerialized(cls, serialized, *args, **kwargs):
-        return super(SymmetricKeyRatchet, cls).fromSerialized(
-            serialized["super"],
-            *args,
-            **kwargs
-        )
