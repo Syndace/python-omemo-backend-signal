@@ -28,13 +28,13 @@ setup(
     long_description_content_type = "text/markdown",
     url = "https://github.com/Syndace/python-omemo-backend-signal",
     author = "Tim Henkes",
-    author_email = "tim@cifg.io",
+    author_email = "me@syndace.dev",
     license = "GPLv3",
     packages = find_packages(),
     install_requires = [
-        "X3DH>=0.5.6,<0.6",
-        "DoubleRatchet>=0.6.0,<0.7",
-        "OMEMO>=0.9.0,<0.11",
+        "X3DH>=0.5.9,<0.6",
+        "DoubleRatchet>=0.7.0,<0.8",
+        "OMEMO>=0.10.5,<0.11",
         "cryptography>=1.7.1",
         "protobuf>=2.6.1"
     ],
