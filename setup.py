@@ -34,7 +34,7 @@ setup(
     install_requires = [
         "X3DH>=0.5.9,<0.6",
         "DoubleRatchet>=0.7.0,<0.8",
-        "OMEMO>=0.11.0,<0.12",
+        "OMEMO>=0.11.0,<0.13",
         "cryptography>=1.7.1",
         "protobuf>=2.6.1"
     ],
