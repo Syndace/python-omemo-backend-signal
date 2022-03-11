@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import doubleratchet
 import x3dh
 
@@ -15,7 +13,7 @@ class DoubleRatchet(doubleratchet.ratchets.DoubleRatchet):
         own_key   = None,
         other_pub = None
     ):
-        super(DoubleRatchet, self).__init__(
+        super().__init__(
             CBCAEAD(),                              # aead
             5000,                                   # message_key_store_max
             SymmetricKeyRatchet(),                  # symmetric_key_ratchet
@@ -30,7 +28,7 @@ class DoubleRatchet(doubleratchet.ratchets.DoubleRatchet):
         return ad
 
     def encryptMessage(self, *args, **kwargs):
-        result = super(DoubleRatchet, self).encryptMessage(*args, **kwargs)
+        result = super().encryptMessage(*args, **kwargs)
         result["additional"] = result["ciphertext"]["additional"]
         result["ciphertext"] = result["ciphertext"]["ciphertext"]
         return result

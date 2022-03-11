@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import doubleratchet
 
 from cryptography.hazmat.backends import default_backend

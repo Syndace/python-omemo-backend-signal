@@ -1,5 +1,6 @@
-from __future__ import absolute_import
+# pylint: disable=useless-import-alias
 
-from .version import __version__
+from .version import __version__ as __version__
+from .project import   project   as   project
 
-from .backend import BACKEND
+from .backend import BACKEND as BACKEND

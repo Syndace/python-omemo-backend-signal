@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from .x3dhpkencoder import X3DHPKEncoder
 
 import x3dh
@@ -18,7 +16,7 @@ class State(x3dh.State):
         The timeout for the SPK is defaulted to one week.
         """
 
-        return super(State, self).__init__(
+        return super().__init__(
             "WhisperText".encode("US-ASCII"), # info_string
             "25519",                          # curve
             "SHA-256",                        # hash_function
@@ -39,7 +37,7 @@ class State(x3dh.State):
         # To allow for this to happen, the ad is reordered so that it always has following
         # structure: IK_own || IK_other.
 
-        result = super(State, self).getSharedSecretActive(*args, **kwargs)
+        result = super().getSharedSecretActive(*args, **kwargs)
 
         IK_own   = result["ad"][:33]
         IK_other = result["ad"][33:]
@@ -49,7 +47,7 @@ class State(x3dh.State):
         return result
 
     def getSharedSecretPassive(self, *args, **kwargs):
-        result = super(State, self).getSharedSecretPassive(*args, **kwargs)
+        result = super().getSharedSecretPassive(*args, **kwargs)
 
         # See getSharedSecretActive for an explanation
         IK_own   = result["ad"][33:]

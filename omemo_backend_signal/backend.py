@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from omemo.backends import Backend
 
 from .doubleratchet import DoubleRatchet

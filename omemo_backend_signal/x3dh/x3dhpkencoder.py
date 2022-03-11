@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import omemo
 
 class X3DHPKEncoder(omemo.backends.X3DHPKEncoder):

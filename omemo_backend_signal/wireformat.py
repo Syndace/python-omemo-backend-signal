@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import doubleratchet
 
 from omemo.backends import WireFormat as WF

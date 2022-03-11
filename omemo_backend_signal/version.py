@@ -1,1 +1,4 @@
-__version__ = "0.2.6"
+__version__ = {}
+__version__["short"] = "0.3.0"
+__version__["tag"]   = "beta"
+__version__["full"]  = "{}-{}".format(__version__["short"], __version__["tag"])
