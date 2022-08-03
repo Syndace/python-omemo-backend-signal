@@ -61,7 +61,7 @@ setup(
         "X3DH>=0.5.9,<0.6",
         "DoubleRatchet>=0.7.0,<0.8",
         "OMEMO>=0.13.0,<0.15",
-        "cryptography>=3.3.2,<37",
+        "cryptography>=3.3.2",
         "protobuf>=2.6.1"
     ],
     python_requires = ">=3.6,<4",
